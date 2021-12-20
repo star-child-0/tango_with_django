@@ -3,7 +3,7 @@ from django.core.files.base import ContentFile
 from django.forms import renderers
 from django.http import request
 from django.shortcuts import render
-from rango.admin import CategoryAdmin
+#from rango.admin import CategoryAdmin
 from rango.models import Category, Page
 from rango.forms import CategoryForm, PageForm
 
@@ -33,7 +33,8 @@ def add_category(request):
     form = CategoryForm()
 
     if request.method == 'POST':
-        form = CategoryForm()
+        form = CategoryForm(request.POST)
+
         if form.is_valid():
             form.save(commit=True)
             return index(request)
@@ -57,7 +58,7 @@ def add_page(requst, category_name_slug):
             if category:
                 page = form.save(commit=False)
                 page.category = category
-                page.view = 0
+                page.views = 0
                 page.save()
                 return show_category(request, category_name_slug)
         else:

@@ -7,8 +7,8 @@
 
     <body>
         <div>
-            {% if category %}
-                <h1>{{% category.name %}}</h1>
+            {% if Category %}
+                <h1>{{% Category.name %}}</h1>
                 {% if pages %}
                     <ul>
                         {% for page in pages %}
@@ -16,7 +16,7 @@
                         {% endfor %}
                     </ul>
                 {% else %}
-                    <strong>No pages currently in ctegory.</strong>
+                    <strong>No pages currently in category.</strong>
             {% endif %}
             {% else %}
                 The specified category does not exist.

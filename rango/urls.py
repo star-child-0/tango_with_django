@@ -1,6 +1,6 @@
 from django.urls import path
 from rango import views
-
+"""
 urlpatterns = [
     path('', views.index, name='index'),
     #path('about/', views.about, name='about'),
@@ -8,3 +8,10 @@ urlpatterns = [
          views.show_category, name='show_category'),
     path('add_category/', views.add_category, name='add_category'),
 ]
+"""
+
+
+def about(request):
+    print(request.method)
+    print(request.user)
+    return render(request, 'rango/about.html', {})

@@ -18,6 +18,11 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 SESSION_EXIPRE_AT_BROWSER_CLOSED = True
+RGISTRATION_OPEN = True
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+LOGIN_REDIRECT_URL = '/rango/'
+LOGIN_URL = '/accouunts/login/'
 
 print(__file__)
 print(os.path.dirname(__file__))
@@ -44,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rango',
+    'registration',
 ]
 
 MIDDLEWARE = [

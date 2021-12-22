@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 {% load rango_template_tags %}
+{% load rango_etras %}
 
 <html>
     <head>
@@ -30,8 +31,8 @@
             </ul>
         </div>
 
-        <div>
-            {% block sidebar_block %}
+        <div class = "col-sm-3 col-md-2 sidebar">
+            {% block side_block %}
                 {% get_category_list category %}
             {% endblock %}
         </div>

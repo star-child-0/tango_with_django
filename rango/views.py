@@ -7,6 +7,7 @@ from django.shortcuts import render, resolve_url
 from rango.models import Category, Page
 from rango.forms import CategoryForm, PageForm
 from datetime import datetime
+from rango.bing_search import run_query, read_bing_key
 
 
 def index(request):
@@ -101,3 +102,13 @@ def visitor_cookie_handler(request):
     else:
         request.session['last_visit'] = last_visit_cookie
     response.session['visits'] = visits
+
+
+def search(request):
+    result_list = []
+
+    if request.method == 'POST':
+        query = request.POST['query'].strip()
+        if query:
+            result_list = run_query(query)
+    return render(request, 'rango/search.html', {'result_list': result_list})

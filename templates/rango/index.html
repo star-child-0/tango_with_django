@@ -10,31 +10,51 @@
     </head>
 
     <body>
-        hey there!<br />
-            <strong>{{ boldmessage }}</strong><br />
-        
-        <div>Hello world!</div>
-
-        <div>
-            {% if Categories %}
-            <ul>
-                {% for category in categories %}
-                <li>
-                    <a href = "{% url 'show_category' category.slug %}">
-                        {{ category.name }}
-                    </a>
-                </li>
-                {% endfor %}
-            </ul>
-            {% else %}
-                <strong>There are no categories present.</strong>
-            {% endif %}
-        </div>
-
-        <div>
-            <a href="{% url 'about' %}">About</a><br />
-            <a href="/rango/add_category/">Add a Category</a><br />
-            <img src="{% static " images/rango.jpg" %}" alt="Picture of Rango" />
+        <div class = "container">
+            <div class = "row">
+                <div class = "col-md-6">
+                    <div class = "card mb-6">
+                        <div class = "card-body">
+                            <h2>Most liked categories</h2>
+                            <p class = "card-text">
+                                {% if Categories %}
+                                    <ul>
+                                        {% for category in categories %}
+                                        <li>
+                                            <a href = "{% url 'show_category' category.slug %}">
+                                                {{ category.name }}
+                                            </a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    <strong>There are no categories present.</strong>
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class = "col-md-6">
+                    <div class = "card mb-6">
+                        <div clss = "card-body">
+                            <h2>Most viewed pages</h2>
+                            <p class = "card-text">
+                                {% if pages %}
+                                    <ul>
+                                        {% for page in pages %}
+                                        <li>
+                                            <a href = "{{page .url }}" > {{ page.title }}</a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    <strong>There are no pages present</strong>
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>

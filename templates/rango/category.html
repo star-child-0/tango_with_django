@@ -6,21 +6,37 @@
     {{ category.name }}
 {% endblock %}
 
-{% block body_block %}
-    {% if category %}
-        <h1>{{ category.name }}</h1>
+<html>
+    {% block body_block %}
+        {% if category %}
+            <h1>{{ category.name }}</h1>
 
-        {% if pages %}
-            <ul>
-                {% for pages in pages %}
-                <li><a href = "{{ page.url }}">{{ page.title }}</a></li>
-                {% endfor %}
-            </ul>
+            {% if pages %}
+                <ul>
+                    {% for pages in pages %}
+                    <li><a href = "{{ page.url }}">{{ page.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <strong>No pages currently in category.</strong>
+            {% endif %}
+            <a href = "{% url 'add_page' category.slug %}">Add a Page.</a>
         {% else %}
-            <strong>No pages currently in category.</strong>
+            The specified category does not exist!
         {% endif %}
-        <a href = "{% url 'add_page' category.slug %}">Add a Page.</a>
-    {% else %}
-        The specified category does not exist!
+    {% endblock %}
+
+    <div>
+        <strong id = "like_count">{{ category.likes }}</strong> people like this category
+        {% if user.is_authenticated %}
+            <button id = "likes" data-catid = "{{category.id}}" class = "btn btn-primary btn-sm" type = "button">
+                <span data-feather = "thumbs-up"></span>
+                Like
+            </button>
+            {% endif %}
+    </div>
+    
+    {% if user.is_authenticated %}
+        <button data-catid="{{category.id}}" data-title="{{ result.title }}" data-url="{{ result.link }}" class = "rango-add btn btn-info btn-sm" type="button">Add</button>
     {% endif %}
-{% endblock %}
+</html>

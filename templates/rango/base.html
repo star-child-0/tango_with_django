@@ -5,6 +5,7 @@
 
 <script src="{% static " js/jquery-3.3.1.min.js" %}"></script>
 <script src="{% static " js/rango-jquery.js" %}"></script>
+<script src="{% static " js/rango-ajax.js" %}"></script>
 
 <html>
     <head>
@@ -37,7 +38,19 @@
         <div class = "col-sm-3 col-md-2 sidebar">
             {% block side_block %}
                 {% get_category_list category %}
+                <input type = "search" calss = "form-control ds-input" id = "search-input" placeholder ="Search...">
             {% endblock %}
         </div>
+
+        <nav>
+            <div class = "sidebar-sticky">
+                <input type = "search" class = "form-control ds-input" id = "suggestion" placeholder = "Search...">
+                <div id = "cats">
+                    {% block sidebar_block %}
+                        {% get_category_list category %}
+                    {% endblock %}
+                </div>
+            </div>
+        </nav>
     </body>
 </html>

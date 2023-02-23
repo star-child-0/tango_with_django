@@ -2,31 +2,31 @@
 {% load static %}
 
 <html>
-    <ul>
-        {% if cats %}
-            {% for c in cats %}
-                <li><a href = "{% url 'category' c.slug %}">{{ c.name }}</a></li>
-                {% if c == act_cat %}
-                    <li class="active">
-                    <li class = "nav-item">
-                        <a class = "nav-link active" href="{% url 'rango:show_category' c.slug %}">
-                            <span data-feather="archive"></span>
-                            {{ c.name }}
-                        </a>
-                    </li>
-                {% else %}
-                    <li>
-                    <li class = "nav-item"> 
-                        <a class = "nav-link" href ="{% url 'rango:show_category' c.slug %}">
-                            <span data-feather="archive"></span>
-                            {{ c.name }}
-                            </a>
-                    </li>
-                {% endif %}
-                    <a href = "{% url 'category' c.slug %}">{{ c.name }}</a></li>
-            {% endfor %}
-        {% else %}
-            <li class="nav-item">No categories yet</li>
-        {% endif %}
-    </ul>
+	<ul>
+		{% if cats %}
+			{% for c in cats %}
+				<li><a href = "{% url 'category' c.slug %}">{{ c.name }}</a></li>
+				{% if c == act_cat %}
+					<li class="active">
+					<li class = "nav-item">
+						<a class = "nav-link active" href="{% url 'rango:show_category' c.slug %}">
+							<span data-feather="archive"></span>
+							{{ c.name }}
+						</a>
+					</li>
+				{% else %}
+					<li>
+					<li class = "nav-item">
+						<a class = "nav-link" href ="{% url 'rango:show_category' c.slug %}">
+							<span data-feather="archive"></span>
+							{{ c.name }}
+							</a>
+					</li>
+				{% endif %}
+					<a href = "{% url 'category' c.slug %}">{{ c.name }}</a></li>
+			{% endfor %}
+		{% else %}
+			<li class="nav-item">No categories yet</li>
+		{% endif %}
+	</ul>
 </html>

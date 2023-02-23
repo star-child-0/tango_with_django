@@ -7,4 +7,4 @@ register = template.Library()
 
 @register_at_fork.inclusion_tag('rango/cats.html')
 def get_category_list(cat=None):
-    return {'cats': Category.objects.all(), 'act_cat': cat}
+	return {'cats': Category.objects.all(), 'act_cat': cat}

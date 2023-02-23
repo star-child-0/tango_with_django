@@ -8,49 +8,48 @@
 <script src="{% static " js/rango-ajax.js" %}"></script>
 
 <html>
-    <head>
-        <title>
-            Rango - 
-            {% block body_block %}
-                - How to tango with Django!
-            {% endblock %}
-        </title>
-    </head>
+	<head>
+		<title>
+			Rango -
+			{% block body_block %}
+				- How to tango with Django!
+			{% endblock %}
+		</title>
+	</head>
 
-    <body>
-        <div>
-            {% block body_block %}
-            {% endblock %}
-        </div>
-        <hr />
-        <div>
-            <ul>
-                <li> <a href = "{% url 'add_category' %}">Add new category</a></li>
-                <li> <a href = "{% url 'about' %}">About</a></li>
-                <li> <a href = "{% url 'index' %}">Index</a></li>
-                <li> <a href = "{% url 'registration_register' %}"></a></li>
-                <li> <a href = "{% url 'auth_login' %}"></a></li>
-                <li> <a href = "{% url 'auth_logout' %}?next=/rango/"></a></li>
+	<body>
+		<div>
+			{% block body_block %}
+			{% endblock %}
+		</div>
+		<hr />
+		<div>
+			<ul>
+				<li> <a href = "{% url 'add_category' %}">Add new category</a></li>
+				<li> <a href = "{% url 'about' %}">About</a></li>
+				<li> <a href = "{% url 'index' %}">Index</a></li>
+				<li> <a href = "{% url 'registration_register' %}"></a></li>
+				<li> <a href = "{% url 'auth_login' %}"></a></li>
+				<li> <a href = "{% url 'auth_logout' %}?next=/rango/"></a></li>
+			</ul>
+		</div>
 
-            </ul>
-        </div>
+		<div class = "col-sm-3 col-md-2 sidebar">
+			{% block side_block %}
+				{% get_category_list category %}
+				<input type = "search" calss = "form-control ds-input" id = "search-input" placeholder ="Search...">
+			{% endblock %}
+		</div>
 
-        <div class = "col-sm-3 col-md-2 sidebar">
-            {% block side_block %}
-                {% get_category_list category %}
-                <input type = "search" calss = "form-control ds-input" id = "search-input" placeholder ="Search...">
-            {% endblock %}
-        </div>
-
-        <nav>
-            <div class = "sidebar-sticky">
-                <input type = "search" class = "form-control ds-input" id = "suggestion" placeholder = "Search...">
-                <div id = "cats">
-                    {% block sidebar_block %}
-                        {% get_category_list category %}
-                    {% endblock %}
-                </div>
-            </div>
-        </nav>
-    </body>
+		<nav>
+			<div class = "sidebar-sticky">
+				<input type = "search" class = "form-control ds-input" id = "suggestion" placeholder = "Search...">
+				<div id = "cats">
+					{% block sidebar_block %}
+						{% get_category_list category %}
+					{% endblock %}
+				</div>
+			</div>
+		</nav>
+	</body>
 </html>
